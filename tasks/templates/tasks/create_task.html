@@ -1,0 +1,33 @@
+<!-- templates/tasks/create_task.html -->
+{% extends 'base_generic.html' %}
+{% load custom_filters %}
+
+{% block title %}Создание задачи{% endblock %}
+
+{% block content %}
+<h2 class="text-center my-4">Создать задачу</h2>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_title" class="form-label">Название задачи</label>
+                {{ form.title|add_class:"form-control" }}
+            </div>
+            <div class="mb-3">
+                <label for="id_description" class="form-label">Описание</label>
+                {{ form.description|add_class:"form-control" }}
+            </div>
+            <div class="mb-3">
+            <label for="id_due_date" class="form-label">Дата выполнения</label>
+            {{ form.due_date|add_class:"form-control" }}
+            </div>
+            <div class="mb-3">
+            <label for="id_priority" class="form-label">Приоритет</label>
+            {{ form.priority|add_class:"form-control" }}
+            </div>
+            <button type="submit" class="btn btn-success w-100">Создать задачу</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
